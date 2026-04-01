@@ -1,10 +1,9 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code when working with code in this repository.
 
 ## Project Overview
-
-OlapDB is a Python OLAP reference study project in early development.
+olapdb is a Python OLAP reference study project in early development.
 
 Current package metadata (from `pyproject.toml`):
 - Name: `olapdb`
@@ -14,30 +13,11 @@ Current package metadata (from `pyproject.toml`):
 - Runtime dependencies: none (currently)
 - Dev dependencies group: `pytest`, `pytest-cov`
 
-## Development Setup
-
-Use a local virtual environment (example shown with `.venv`):
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -e .
-pip install pytest pytest-cov
-```
-
-Alternative (if using `uv`):
-```bash
-uv sync --dev
-```
-
 ## Commands
 
 Current useful commands:
-- **Run all tests:** `pytest`
-- **Run one test file:** `pytest tests/test_connection.py`
-- **Run one test case:** `pytest tests/test_connection.py::TestConnection::test_connect`
-- **Run tests with coverage:** `pytest --cov=olapdb --cov-report=term-missing`
-
-If using `uv`, prefix with `uv run` (example: `uv run pytest`).
+- **Run all tests:** `uv run pytest`
+- **Run tests with coverage:** `uv run pytest --strict --durations 5 --verbose -r A --tb auto --cov --cov-report=term`
 
 ## Architecture
 
@@ -52,3 +32,33 @@ Current minimal architecture:
 Notes:
 - The package is intentionally minimal right now.
 - As new modules are added, keep this section updated with concrete components and their responsibilities.
+
+## Output
+- Return code first. Explanation after, only if non-obvious.
+- No inline prose. Use comments sparingly - only where logic is unclear.
+- No boilerplate unless explicitly requested.
+
+## Code Rules
+- Simplest working solution. No over-engineering.
+- No abstractions for single-use operations.
+- No speculative features or "you might also want..."
+- Read the file before modifying it. Never edit blind.
+- No docstrings or type annotations on code not being changed.
+- No error handling for scenarios that cannot happen.
+- Three similar lines is better than a premature abstraction.
+
+## Review Rules
+- State the bug. Show the fix. Stop.
+- No suggestions beyond the scope of the review.
+- No compliments on the code before or after the review.
+
+## Debugging Rules
+- Never speculate about a bug without reading the relevant code first.
+- State what you found, where, and the fix. One pass.
+- If cause is unclear: say so. Do not guess.
+
+## Simple Formatting
+- No em dashes, smart quotes, or decorative Unicode symbols.
+- Plain hyphens and straight quotes only.
+- Natural language characters (accented letters, CJK, etc.) are fine when the content requires them.
+- Code output must be copy-paste safe.
