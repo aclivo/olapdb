@@ -1,4 +1,4 @@
-from .connection import connect
+from .dbapi import connect
 
 apilevel = "2.0"
 threadsafety = 1

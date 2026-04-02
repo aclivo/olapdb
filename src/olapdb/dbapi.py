@@ -1,6 +1,20 @@
-from typing import Sequence, Type, Any, Dict, Tuple
+from __future__ import annotations
 
 import pep249
+
+from typing import Sequence, Type, Any, Dict, Tuple
+
+
+def connect() -> Connection:
+    return Connection()
+
+
+class Connection(pep249.TransactionlessConnection):
+    def cursor(self: pep249.TransactionlessConnection) -> Cursor:
+        raise NotImplementedError
+
+    def close(self) -> None:
+        raise NotImplementedError
 
 
 class Cursor(pep249.Cursor):
