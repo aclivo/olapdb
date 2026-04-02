@@ -9,7 +9,7 @@ authors = [
 requires-python = ">=3.14"
 dependencies = [
     "pep249abc",
-    "sqlalchemy>=2.0.48",
+    "sqlalchemy",
 ]
 
 [build-system]
@@ -21,6 +21,7 @@ olapdb = "olapdb.dialect:OlapDBDialect"
 
 [dependency-groups]
 dev = [
+    "mypy",
     "pytest",
     "pytest-cov",
 ]
