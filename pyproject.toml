@@ -7,7 +7,9 @@ authors = [
     { name = "tarcisio", email = "20189+tarcisio@users.noreply.github.com" }
 ]
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "pep249abc",
+]
 
 [build-system]
 requires = ["uv_build>=0.11.2,<0.12.0"]
