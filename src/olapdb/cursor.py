@@ -2,6 +2,7 @@ from typing import Sequence, Type, Any, Dict, Tuple
 
 import pep249
 
+
 class Cursor(pep249.Cursor):
     def setinputsizes(self: Cursor, sizes: Sequence[int | Type | None]) -> None:
         raise NotImplementedError
@@ -9,17 +10,36 @@ class Cursor(pep249.Cursor):
     def setoutputsize(self: Cursor, size: int, column: int | None) -> None:
         raise NotImplementedError
 
-    def execute(self: Cursor, operation: str, parameters: Sequence[Any] | Dict[str | int, Any] | None = None) -> Cursor:
+    def execute(
+        self: Cursor,
+        operation: str,
+        parameters: Sequence[Any] | Dict[str | int, Any] | None = None,
+    ) -> Cursor:
         raise NotImplementedError
 
-    def executemany(self: Cursor, operation: str, seq_of_parameters: Sequence[Sequence[Any] | Dict[str | int, Any]]) -> Cursor:
+    def executemany(
+        self: Cursor,
+        operation: str,
+        seq_of_parameters: Sequence[Sequence[Any] | Dict[str | int, Any]],
+    ) -> Cursor:
         raise NotImplementedError
 
-    def callproc(self: Cursor, procname: str, parameters: Sequence[Any] | None = None) -> Sequence[Any] | None:
+    def callproc(
+        self: Cursor, procname: str, parameters: Sequence[Any] | None = None
+    ) -> Sequence[Any] | None:
         raise NotImplementedError
 
     @property
-    def description(self: Cursor) -> Sequence[Tuple[str, type, int | None, int | None, int | None, int | None, bool | None]] | None:
+    def description(
+        self: Cursor,
+    ) -> (
+        Sequence[
+            Tuple[
+                str, type, int | None, int | None, int | None, int | None, bool | None
+            ]
+        ]
+        | None
+    ):
         raise NotImplementedError
 
     @property
